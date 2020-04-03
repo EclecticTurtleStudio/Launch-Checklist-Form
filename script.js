@@ -1,27 +1,27 @@
 // Write your JavaScript code here!
 
+
 window.addEventListener("load", function() {
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(
       function(response) {
          response.json().then( function(json) {
+            let mars = json[3];
             const div = document.getElementById("missionTarget");
             div.innerHTML = `
                <h2>Mission Destination</h2>
                <ol>
-                  <li>Name: ${}</li>
-                  <li>Diameter: ${}</li>
-                  <li>Star: ${}</li>
-                  <li>Distance from Earth: ${}</li>
-                  <li>Number of Moons: ${}</li>
+                  <li>Name: ${mars.name}</li>
+                  <li>Diameter: ${mars.diameter}</li>
+                  <li>Star: ${mars.star}</li>
+                  <li>Distance from Earth: ${mars.distance}</li>
+                  <li>Number of Moons: ${mars.moons}</li>
                </ol>
-               <img src="${}">
+               <img src="${mars.image}">
             `
          })
       }
    )
-})
-
-window.addEventListener("load", function() {
+   
    let form = document.querySelector("form");
    form.addEventListener("submit", function(event) {
       let pilotNameInput = document.querySelector('input[name=pilotName]');
@@ -75,14 +75,24 @@ window.addEventListener("load", function() {
    });
 });
 
-/* This block of code shows how to format the HTML once you fetch some planetary JSON!
-<h2>Mission Destination</h2>
-<ol>
-   <li>Name: ${}</li>
-   <li>Diameter: ${}</li>
-   <li>Star: ${}</li>
-   <li>Distance from Earth: ${}</li>
-   <li>Number of Moons: ${}</li>
-</ol>
-<img src="${}">
-*/
+window.addEventListener("load", function() {
+   fetch("https://handlers.education.launchcode.org/static/planets.json").then(
+      function(response) {
+         response.json().then( function(json) {
+            let mars = json[3];
+            const div = document.getElementById("missionTarget");
+            div.innerHTML = `
+               <h2>Mission Destination</h2>
+               <ol>
+                  <li>Name: ${mars.name}</li>
+                  <li>Diameter: ${mars.diameter}</li>
+                  <li>Star: ${mars.star}</li>
+                  <li>Distance from Earth: ${mars.distance}</li>
+                  <li>Number of Moons: ${mars.moons}</li>
+               </ol>
+               <img src="${mars.image}">
+            `
+         })
+      }
+   )
+});
