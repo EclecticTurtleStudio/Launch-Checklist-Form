@@ -1,6 +1,27 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function() {
+   fetch("https://handlers.education.launchcode.org/static/planets.json").then(
+      function(response) {
+         response.json().then( function(json) {
+            const div = document.getElementById("missionTarget");
+            div.innerHTML = `
+               <h2>Mission Destination</h2>
+               <ol>
+                  <li>Name: ${}</li>
+                  <li>Diameter: ${}</li>
+                  <li>Star: ${}</li>
+                  <li>Distance from Earth: ${}</li>
+                  <li>Number of Moons: ${}</li>
+               </ol>
+               <img src="${}">
+            `
+         })
+      }
+   )
+})
+
+window.addEventListener("load", function() {
    let form = document.querySelector("form");
    form.addEventListener("submit", function(event) {
       let pilotNameInput = document.querySelector('input[name=pilotName]');
@@ -10,15 +31,17 @@ window.addEventListener("load", function() {
 
       let launchIndicator = 'green';
 
-      if (pilotNameInput.value === "" || copilotNameInput.value === "") {
+      event.preventDefault();
+
+      let pilot = pilotNameInput.value;
+      let copilot = copilotNameInput.value;
+
+      if (pilot === "" || copilot === "") {
          alert("All fields are required!");
-         event.preventDefault();
       } if (isNaN(fuellevelInput.value)) {
          alert("Fuel Level must be a number");
-         event.preventDefault();
       } if (isNaN(cargoMassInput.value)) {
          alert("Cargo Mass must be a number");
-         event.preventDefault();
       }
 
       function showFaultyItemsList() {

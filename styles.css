@@ -1,5 +1,12 @@
+body {
+    background-image: url(ivana-cajina-asuyh-_ZX54-unsplash.jpg);
+    background-size: cover;
+}
+
 h1 {
     text-align: center;
+    color: white;
+    font-family: sans-serif;
 }
 
 div {
