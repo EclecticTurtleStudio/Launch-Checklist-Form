@@ -38,11 +38,16 @@ window.addEventListener("load", function() {
 
       if (pilot === "" || copilot === "") {
          alert("All fields are required!");
+      } if (fuellevelInput.value === "" || cargoMassInput.value === "") {
+         alert("All fields are required!");
       } if (isNaN(fuellevelInput.value)) {
          alert("Fuel Level must be a number");
       } if (isNaN(cargoMassInput.value)) {
          alert("Cargo Mass must be a number");
       }
+
+      document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} Ready`;
+      document.getElementById("copilotStatus").innerHTML = `Copilot ${copilot} Ready`;
 
       function showFaultyItemsList() {
          let launchStatus = document.getElementById("launchStatus");
@@ -53,7 +58,7 @@ window.addEventListener("load", function() {
       }
 
       if (fuellevelInput.value < 10000) {
-         let fuelStatus = document.getElementById("fuelstatus");
+         let fuelStatus = document.getElementById("fuelStatus");
          fuelStatus.innerHTML = "Not enough fuel for your journey";
          launchIndicator = 'red';
       } 
